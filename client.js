@@ -4,12 +4,14 @@ const connect = function () {
     host: 'localhost',
     port: 50541
   });
-  // interpret incoming data as text
+  conn.on('connect', () => {
+    console.log("You're connected to the game server!");
+    conn.write("Name: Mel");
+  });
   conn.on('data', () => {
     console.log('You dedd cause you idled');
   });
   conn.setEncoding('utf8');
-
   return conn;
 };
 
